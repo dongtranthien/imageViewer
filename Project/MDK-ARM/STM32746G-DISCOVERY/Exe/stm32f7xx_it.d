@@ -48,6 +48,7 @@ stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\integer.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\ffconf.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\main.h
+stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\bmp.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\diskio.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\sd_diskio.h

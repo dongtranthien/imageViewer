@@ -28,12 +28,13 @@
 "stm32746g-discovery\exe\stm32f7xx_it.o"
 "stm32746g-discovery\exe\fatfs_storage.o"
 "stm32746g-discovery\exe\main.o"
+"stm32746g-discovery\exe\bmp.o"
 "stm32746g-discovery\exe\sd_diskio.o"
 "stm32746g-discovery\exe\unicode.o"
 "stm32746g-discovery\exe\syscall.o"
 "stm32746g-discovery\exe\startup_stm32f746xx.o"
 "stm32746g-discovery\exe\system_stm32f7xx.o"
---library_type=microlib --strict --scatter "STM32746G-DISCOVERY\Exe\Project.sct"
+--strict --scatter "STM32746G-DISCOVERY\Exe\Project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Project.map" -o STM32746G-DISCOVERY\Exe\Project.axf

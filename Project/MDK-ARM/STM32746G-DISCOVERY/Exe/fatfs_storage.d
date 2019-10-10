@@ -48,6 +48,7 @@ stm32746g-discovery\exe\fatfs_storage.o: ..\..\Lib\Drivers\BSP\STM32746G-Discove
 stm32746g-discovery\exe\fatfs_storage.o: ..\..\Lib\Drivers\BSP\STM32746G-Discovery\../../../Utilities/Fonts/fonts.h
 stm32746g-discovery\exe\fatfs_storage.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32746g-discovery\exe\fatfs_storage.o: ..\Inc\fatfs_storage.h
+stm32746g-discovery\exe\fatfs_storage.o: ..\Inc\bmp.h
 stm32746g-discovery\exe\fatfs_storage.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h
 stm32746g-discovery\exe\fatfs_storage.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\diskio.h
 stm32746g-discovery\exe\fatfs_storage.o: ..\Inc\sd_diskio.h

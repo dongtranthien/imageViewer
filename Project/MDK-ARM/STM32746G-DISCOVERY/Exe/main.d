@@ -1,4 +1,4 @@
-stm32746g-discovery\exe\main.o: ../Src/main.c
+stm32746g-discovery\exe\main.o: ..\Src\main.cpp
 stm32746g-discovery\exe\main.o: ..\Inc\main.h
 stm32746g-discovery\exe\main.o: ..\..\Lib\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery.h
 stm32746g-discovery\exe\main.o: ..\..\Lib\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h
@@ -48,6 +48,7 @@ stm32746g-discovery\exe\main.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\ff.h
 stm32746g-discovery\exe\main.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\integer.h
 stm32746g-discovery\exe\main.o: ..\Inc\ffconf.h
 stm32746g-discovery\exe\main.o: ..\Inc\main.h
+stm32746g-discovery\exe\main.o: ..\Inc\bmp.h
 stm32746g-discovery\exe\main.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h
 stm32746g-discovery\exe\main.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\diskio.h
 stm32746g-discovery\exe\main.o: ..\Inc\sd_diskio.h

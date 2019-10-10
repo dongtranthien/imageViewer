@@ -98,23 +98,23 @@ ARM Macro Assembler    Page 2
    54 00001000         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
    55 00001000         ; </h>
    56 00001000         
-   57 00001000 00000600 
+   57 00001000 00006000 
                        Heap_Size
-                               EQU              0x600
+                               EQU              0x6000
    58 00001000         
    59 00001000                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    60 00000000         __heap_base
    61 00000000         Heap_Mem
                                SPACE            Heap_Size
-   62 00000600         __heap_limit
-   63 00000600         
-   64 00000600                 PRESERVE8
-   65 00000600                 THUMB
-   66 00000600         
-   67 00000600         
-   68 00000600         ; Vector Table Mapped to Address 0 at Reset
-   69 00000600                 AREA             RESET, DATA, READONLY
+   62 00006000         __heap_limit
+   63 00006000         
+   64 00006000                 PRESERVE8
+   65 00006000                 THUMB
+   66 00006000         
+   67 00006000         
+   68 00006000         ; Vector Table Mapped to Address 0 at Reset
+   69 00006000                 AREA             RESET, DATA, READONLY
    70 00000000                 EXPORT           __Vectors
    71 00000000                 EXPORT           __Vectors_End
    72 00000000                 EXPORT           __Vectors_Size
@@ -516,7 +516,7 @@ ARM Macro Assembler    Page 8
   199 00000000                 IMPORT           SystemInit
   200 00000000                 IMPORT           __main
   201 00000000         
-  202 00000000 4806            LDR              R0, =SystemInit
+  202 00000000 4809            LDR              R0, =SystemInit
   203 00000002 4780            BLX              R0
 
 
@@ -524,7 +524,7 @@ ARM Macro Assembler    Page 8
 ARM Macro Assembler    Page 9 
 
 
-  204 00000004 4806            LDR              R0, =__main
+  204 00000004 4809            LDR              R0, =__main
   205 00000006 4700            BX               R0
   206 00000008                 ENDP
   207 00000008         
@@ -929,25 +929,36 @@ ARM Macro Assembler    Page 15
   457 0000001C         ;*******************************************************
                        ************************
   458 0000001C                 IF               :DEF:__MICROLIB
-  459 0000001C         
-  460 0000001C                 EXPORT           __initial_sp
-  461 0000001C                 EXPORT           __heap_base
-  462 0000001C                 EXPORT           __heap_limit
-  463 0000001C         
-  464 0000001C                 ELSE
-  479                          ENDIF
-  480 0000001C         
-  481 0000001C                 END
+  465 0000001C         
+  466 0000001C                 IMPORT           __use_two_region_memory
+  467 0000001C                 EXPORT           __user_initial_stackheap
+  468 0000001C         
+  469 0000001C         __user_initial_stackheap
+  470 0000001C         
+  471 0000001C 4804            LDR              R0, =  Heap_Mem
+  472 0000001E 4905            LDR              R1, =(Stack_Mem + Stack_Size)
+  473 00000020 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
+  474 00000022 4B06            LDR              R3, = Stack_Mem
+  475 00000024 4770            BX               LR
+  476 00000026         
+  477 00000026 00 00           ALIGN
+  478 00000028         
+  479 00000028                 ENDIF
+  480 00000028         
+  481 00000028                 END
               00000000 
+              00000000 
+              00000000 
+              00001000 
+              00006000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
 interwork --depend=stm32746g-discovery\exe\startup_stm32f746xx.d -ostm32746g-di
 scovery\exe\startup_stm32f746xx.o -I.\RTE\_STM32746G-DISCOVERY -IC:\Keil_v5\ARM
 \PACK\ARM\CMSIS\5.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.
-12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__EVAL SETA 1" --pr
-edefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 525" --predefin
-e="_RTE_ SETA 1" --predefine="STM32F746xx SETA 1" --list=startup_stm32f746xx.ls
-t startup_stm32f746xx.s
+12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__UVISION_VERSION S
+ETA 525" --predefine="_RTE_ SETA 1" --predefine="STM32F746xx SETA 1" --list=sta
+rtup_stm32f746xx.lst startup_stm32f746xx.s
 
 
 
@@ -968,8 +979,9 @@ Symbol: Stack_Mem
    Definitions
       At line 49 in file startup_stm32f746xx.s
    Uses
-      None
-Comment: Stack_Mem unused
+      At line 472 in file startup_stm32f746xx.s
+      At line 474 in file startup_stm32f746xx.s
+
 __initial_sp 00001000
 
 Symbol: __initial_sp
@@ -977,8 +989,7 @@ Symbol: __initial_sp
       At line 50 in file startup_stm32f746xx.s
    Uses
       At line 74 in file startup_stm32f746xx.s
-      At line 460 in file startup_stm32f746xx.s
-
+Comment: __initial_sp used once
 3 symbols
 
 
@@ -1000,24 +1011,25 @@ Symbol: Heap_Mem
    Definitions
       At line 61 in file startup_stm32f746xx.s
    Uses
-      None
-Comment: Heap_Mem unused
+      At line 471 in file startup_stm32f746xx.s
+      At line 473 in file startup_stm32f746xx.s
+
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
       At line 60 in file startup_stm32f746xx.s
    Uses
-      At line 461 in file startup_stm32f746xx.s
-Comment: __heap_base used once
-__heap_limit 00000600
+      None
+Comment: __heap_base unused
+__heap_limit 00006000
 
 Symbol: __heap_limit
    Definitions
       At line 62 in file startup_stm32f746xx.s
    Uses
-      At line 462 in file startup_stm32f746xx.s
-Comment: __heap_limit used once
+      None
+Comment: __heap_limit unused
 4 symbols
 
 
@@ -2133,21 +2145,30 @@ Symbol: WWDG_IRQHandler
       At line 92 in file startup_stm32f746xx.s
       At line 254 in file startup_stm32f746xx.s
 
-109 symbols
+__user_initial_stackheap 0000001C
+
+Symbol: __user_initial_stackheap
+   Definitions
+      At line 469 in file startup_stm32f746xx.s
+   Uses
+      At line 467 in file startup_stm32f746xx.s
+Comment: __user_initial_stackheap used once
+110 symbols
 
 
 
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Absolute symbols
 
-Heap_Size 00000600
+Heap_Size 00006000
 
 Symbol: Heap_Size
    Definitions
       At line 57 in file startup_stm32f746xx.s
    Uses
       At line 61 in file startup_stm32f746xx.s
-Comment: Heap_Size used once
+      At line 473 in file startup_stm32f746xx.s
+
 Stack_Size 00001000
 
 Symbol: Stack_Size
@@ -2155,7 +2176,8 @@ Symbol: Stack_Size
       At line 46 in file startup_stm32f746xx.s
    Uses
       At line 49 in file startup_stm32f746xx.s
-Comment: Stack_Size used once
+      At line 472 in file startup_stm32f746xx.s
+
 __Vectors_Size 000001C8
 
 Symbol: __Vectors_Size
@@ -2187,5 +2209,13 @@ Symbol: __main
    Uses
       At line 204 in file startup_stm32f746xx.s
 Comment: __main used once
-2 symbols
-462 symbols in table
+__use_two_region_memory 00000000
+
+Symbol: __use_two_region_memory
+   Definitions
+      At line 466 in file startup_stm32f746xx.s
+   Uses
+      None
+Comment: __use_two_region_memory unused
+3 symbols
+464 symbols in table
