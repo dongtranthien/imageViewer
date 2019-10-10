@@ -64,6 +64,8 @@ int main(void)
 	
 	BMP bmpWindow(100,100);
 	bmpWindow.init();
+	
+	BSP_LCD_DrawBitmap(0, 0, bmpWindow.getImage());
 
 
 	while(1);

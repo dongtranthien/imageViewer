@@ -8,12 +8,14 @@
 class BMP{
 	public:
 		BMP(uint16_t h, uint16_t w);
+		~BMP();
 		void init();
-		uint8_t get1(uint16_t index);
+		uint8_t* getImage(void);
+		uint8_t *dat;
 	
 	private:
 		uint16_t height, width;
-		uint8_t *dat;
+		
 };
 
 #endif
