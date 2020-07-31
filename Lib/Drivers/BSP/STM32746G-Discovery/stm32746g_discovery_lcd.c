@@ -1034,8 +1034,9 @@ void BSP_LCD_DrawPixel(uint16_t Xpos, uint16_t Ypos, uint32_t RGB_Code)
   * @param  pbmp: Pointer to Bmp picture address in the internal Flash
   * @retval None
   */
+uint8_t *pbmp1;
 void BSP_LCD_DrawBitmap(uint32_t Xpos, uint32_t Ypos, uint8_t *pbmp)
-{
+{pbmp1 = pbmp;
   uint32_t index = 0, width = 0, height = 0, bit_pixel = 0;
   uint32_t address;
   uint32_t input_color_mode = 0;

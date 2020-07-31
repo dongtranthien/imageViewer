@@ -42,8 +42,8 @@ stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Drivers\BSP\STM32746G-Discover
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Drivers\BSP\STM32746G-Discovery\stm32746g_discovery_sdram.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Drivers\BSP\STM32746G-Discovery\../../../Utilities/Fonts/fonts.h
 stm32746g-discovery\exe\stm32f7xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\fatfs_storage.h
 stm32746g-discovery\exe\stm32f7xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\fatfs_storage.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\ff.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\..\Lib\Middlewares\Third_Party\FatFs\src\integer.h
 stm32746g-discovery\exe\stm32f7xx_it.o: ..\Inc\ffconf.h

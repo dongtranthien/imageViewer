@@ -11,11 +11,12 @@ class BMP{
 		~BMP();
 		void init();
 		uint8_t* getImage(void);
+		void change(void);
 		uint8_t *dat;
 	
 	private:
 		uint16_t height, width;
-		
+		uint16_t changeIndex;
 };
 
 #endif

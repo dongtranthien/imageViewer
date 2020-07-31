@@ -6,6 +6,8 @@
 #include "stm32746g_discovery.h"
 #include "stm32746g_discovery_lcd.h"
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "fatfs_storage.h"
 #include "bmp.h"
 

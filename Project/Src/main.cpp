@@ -62,13 +62,16 @@ int main(void)
 
   BSP_SD_Init();	
 	
-	BMP bmpWindow(100,100);
+	BMP bmpWindow(480,272);
 	bmpWindow.init();
 	
-	BSP_LCD_DrawBitmap(0, 0, bmpWindow.getImage());
-
-
-	while(1);
+	BSP_LCD_DrawBitmap(0, 0, (uint8_t *)(bmpWindow.getImage()));
+	BSP_LCD_SetTransparency(1, 255);
+	
+	while(1){
+		bmpWindow.change();
+		BSP_LCD_DrawBitmap(0, 0, (uint8_t *)(bmpWindow.getImage()));
+	}
   
 }
 
